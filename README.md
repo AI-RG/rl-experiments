@@ -1,11 +1,12 @@
-# A2C
+# A2C2: A2C + criticality
 
 This code can run reinforcement learning experiments: in particular, it is designed to investigate the potential of Self-Organized Criticality (SOC) as a method to speed learning. Practically speaking, criticality is encouraged by the addition of another loss term
-https://latex.codecogs.com/gif.latex?L_%7BSOC%7D_%28s%29%20%3D%20ReLU%28%7C%5Cbar%7Bs%7D%7C%20-%20m_&plus;%29%5E2%20&plus;%20ReLU%28m_-%20-%20%7C%5Cbar%7Bs%7D%7C%29%5E2
-which penalizes the time-averaged state hidden state s (element-wise)
+
+![Image of SOC loss term](https://github.com/AI-RG/rl-experiments/blob/master/soc_loss.gif)
+
+which penalizes the time-averaged hidden state *s* (element-wise). Roughly, this encourages the time average of each component of the state to change over the course of the averaging timescale, so that consistently large (near absolute magnitude 1) or small (near zero) time averages are penalized. One perspective on this approach is that it encourages exploration in the space of internal representations.
 
 This repository is modified from a version of the A2C algorithm in OpenAI's collection of baselines.
-
 
 - Original paper: https://arxiv.org/abs/1602.01783
 - Baselines blog post: https://blog.openai.com/baselines-acktr-a2c/
